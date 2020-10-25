@@ -6,11 +6,13 @@
 gb = {'TL': ' ', 'ML': ' ', 'BL': ' ', 'TM': ' ', 'MM': ' ', 'BM': ' ', 'TR': ' ', 'MR': ' ', 'BR': ' '} #dictionary with all space names
 
 def ttt(gb):
+    print("\n")
     print ((gb["TL"]) + '|' + (gb["TM"]) + '|' + (gb["TR"]))
     print ('-+-+-')
     print ((gb["ML"]) + '|' + (gb["MM"]) + '|' + (gb["MR"]))#this function creates the board and assigns values.
     print ('-+-+-')
     print ((gb['BL']) + '|' + (gb["BM"]) + '|' + (gb["BR"]))
+    print("\n")
     winnercheck(gb)
     tie(gb)
     
@@ -23,11 +25,11 @@ def ttt(gb):
     
 def player1():
     print("player 1 is X. Player 2 is O")
-    player1=input('Player 1, choose your spot to place X (TL, ML, BL, TM, MM, BM, TR, MR, BR ) ')
+    player1=input('Player 1, choose your spot to place X \n (TL, ML, BL, TM, MM, BM, TR, MR, BR ) ')
 
     if gb[player1]!=" ":
         print ("space already filled, skip your turn")
-        ttt(gb)#if theres already a space taken, it's invalid
+        ttt(gb)#if there's already a space taken, it's invalid, player is penalized by a skipped turn
         player2()  
     else:
         gb[player1]="X"
@@ -47,7 +49,7 @@ def player1():
 
 def player2():
     print("Player 2, it's your turn!")
-    player2=input('Player 2, choose your spot to place O, but keep in mind that you must choose a different space than the last one. (TL, ML, BL, TM, MM, BM, TR, MR, BR ) ')
+    player2=input('Player 2, choose your spot to place O, but keep in mind that you must choose a different space than the last one. \n (TL, ML, BL, TM, MM, BM, TR, MR, BR ) ')
     
     
     if gb[player2]!=" ":
