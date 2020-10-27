@@ -24,24 +24,29 @@ def ttt(gb):
     
     
 def player1():
+
     print("player 1 is X. Player 2 is O")
     player1=input('Player 1, choose your spot to place X \n (TL, ML, BL, TM, MM, BM, TR, MR, BR ) ')
-
-    if gb[player1]!=" ":
-        print ("space already filled, skip your turn")
-        ttt(gb)#if there's already a space taken, it's invalid, player is penalized by a skipped turn
-        player2()  
-    else:
-        gb[player1]="X"
-        ttt(gb)#if the input is correct, the game continues
-        player2()
-     
-    '''if player1=='TL' or 'ML' or 'BL' or 'TM' or 'MM' or 'BM' or 'TR' or 'MR' or 'BR':
-        gb[player1]="X"
+    
+    
+    if player1!='TL' and player1!='ML' and player1!='BL' and player1!='TM' and player1!='MM' and player1!='BM' and player1!='TR' and player1!='MR' and player1!='BR':
+        print("invalid input, skip your turn")
         ttt(gb)
         player2()
-    else:
-        print("invalid input, skip your turn")'''
+    
+    if gb[player1]!=" ":
+        print ("space already filled, skip your turn")
+        ttt(gb) #if theres already a space taken, it's invalid
+        player2()
+    
+   
+    else: 
+        gb[player1]="X"
+        ttt(gb) #if the input is correct, the game continues
+        player2()
+     
+    
+    
 
    
     
@@ -51,6 +56,10 @@ def player2():
     print("Player 2, it's your turn!")
     player2=input('Player 2, choose your spot to place O, but keep in mind that you must choose a different space than the last one. \n (TL, ML, BL, TM, MM, BM, TR, MR, BR ) ')
     
+    if player2!='TL' and player2!='ML' and player2!='BL' and player2!='TM' and player2!='MM' and player2!='BM' and player2!='TR' and player2!='MR' and player2!='BR':
+        print("invalid input, skip your turn")
+        ttt(gb)
+        player1()
     
     if gb[player2]!=" ":
         print ("space already filled, skip your turn")
@@ -63,15 +72,7 @@ def player2():
         ttt(gb) #if the input is correct, the game continues
         player1()
 
-      
-    '''if player2=='TL' or 'ML' or 'BL' or 'TM' or 'MM' or 'BM' or 'TR' or 'MR' or 'BR':
-        gb[player2]="O"
-        ttt(gb)
-        player1()
-    else:
-        print("invalid input, skip your turn")'''
 
-    
     
     
 #this function checks the winners
@@ -146,7 +147,6 @@ def winnercheck(gb):
                 
 
             #diagonal winners:
-
     if gb["TL"]==gb["MM"]==gb["BR"]:
         if gb["MM"] == "X":#if 3 x's or o's are in a row, the game ends.
             print("player 1 is the winner!")
